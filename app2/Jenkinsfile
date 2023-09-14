@@ -1,0 +1,21 @@
+pipeline {
+    agent {
+        label 'linux'
+    }
+    options {
+        timeout(time: 1, unit: 'HOURS')
+        timestamps()
+    }
+    stages {
+        stage('Run') {
+            steps {
+                echo "Hello application 2"
+            }
+        }
+    }
+    post {
+        always {
+            deleteDir()
+        }
+    }
+}
